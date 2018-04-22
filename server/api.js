@@ -1,116 +1,52 @@
 'use strict'
 const api = require('express').Router()
 const db = require('../db/models')
-const Campus = db.Campus;
+const Event = db.Event;
 const User = db.User;
-const bluebird = require('bluebird');
 
 //GET:
-api.get('/', (req, res, next) => {
-  db.User.findAll({include: [{all: true}]})
-  .then(allData => {
-    res.json(allData);
+api.get('/events', (req, res, next) => {
+  db.Event.findAll({include: [{all: true}]})
+  .then(allEvents => {
+    res.json(allEvents);
   })
   .catch(next)
 })
 
-api.get('/campuses', (req, res, next) => {
-  db.Campus.findAll()
-  .then((campuses) => {
-    res.status(200).json(campuses);
+//POST:
+api.post('/events', function (req, res, next) {
+  db.Event.create(req.body)
+  .then ((events) => {
+    res.status(201).json(events);
   })
   .catch(next);
-})
-
-api.get('/campuses/:id', (req, res, next) => {
-	db.Campus.findOne({
-		include: [{model: User}],
-		where: {
-			id: Number(req.params.id)
-		}
-	})
-	.then(campus => {
-		res.json(campus)
-	})
-	.catch(next)
-})
-
-api.get('/students', (req, res, next) => {
-  db.User.findAll({include:[{model: Campus}]})
-  .then((students) => {
-    res.status(200).json(students);
-  })
-  .catch(next);
-})
-
-api.get('/students/:id', (req, res, next) => {
-	db.User.findOne({
-		include: [{model: Campus}],
-		where: {
-			id: Number(req.params.id)
-		}
-	})
-	.then(student => {
-		res.json(student)
-	})
-	.catch(next)
 })
 
 //DELETE:
-api.delete('/campuses/:id', (req, res, next) => {
-  const id = Number(req.params.id);
-  db.User.destroy({
-    where: {campusId: id}
-  })
-  .then(()=>db.Campus.destroy({
+api.delete('/events/:id', (req, res, next) => {
+  let id = Number(req.params.id);
+  db.Event.destroy({
     where: {id}
-  }))
+  })
   .then(()=>res.sendStatus(202))
   .catch(next)
 });
 
-api.delete('/students/:id', (req, res, next) => {
+// PUT:
+api.put('/events/:id', (req, res, next) => {
   const id = Number(req.params.id);
-  db.User.destroy({
-     where: { id }
-    })
-    .then(()=>res.sendStatus(202))
-    .catch(next);
-});
-
-//PUT
-api.put('/students/:id/edit', (req, res, next) => {
-  const id = Number(req.params.id);
-  db.User.findOne({
-		include: [{model: Campus}],
+  db.Event.findOne({
+		include: [{model: User}],
 		where: {id}
 	})
-	.then(studentToUpdate => {
-    studentToUpdate.update({
-      name: req.body.inputName,
-      email: req.body.inputEmail,
-      campusId: req.body.selectedCampusId
+	.then(eventToUpdate => {
+    eventToUpdate.update({
+      name: req.body.newName,
+      date: req.body.newDate,
     })
   })
-  .then((updatedStudent) => {
-    res.status(200).json(updatedStudent)
-  })
-  .catch(next);
-})
-
-//POST:
-api.post('/students', function (req, res, next) {
-  db.User.create(req.body)
-  .then ((students) => {
-    res.status(201).json(students);
-  })
-  .catch(next);
-})
-
-api.post('/campus', function (req, res, next) {
-  db.Campus.create(req.body)
-  .then ((students) => {
-    res.status(201).json(students);
+  .then((updatedEvent) => {
+    res.status(200).json(updatedEvent)
   })
   .catch(next);
 })

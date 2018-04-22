@@ -1,60 +1,54 @@
 const express = require('express')
 const db = require('./db')
-const Campus = require('./db/models').Campus;
-const Student = require('./db/models').User;
+const Sequelize = require('sequelize');
+const Event = require('./db/models').Event;
+const User = require('./db/models').User;
 
 db
   .sync({ force: true })
   .then(() => {
     console.log('planting seeds');
-    return Campus.bulkCreate([
+    return User.create(
       {
-        name: 'Luna',
-        image: '/luna.png'
-      },
-      {
-        name: 'Mars',
-        image: '/mars.png'
-      },
-      {
-        name: 'Terra',
-        image: '/terra.png'
-      },
-      {
-        name: 'Titan',
-        image: '/titan.png'
+        name: 'Erika'
       }
-    ]);
+    );
   })
   .then(() => {
     console.log('planting more seeds');
-    return Student.bulkCreate([
+    return Event.bulkCreate([
       {
-        name: 'erika',
-        email: 'erika@aol.com',
-        campusId: '1'
+        name: 'Luna',
+        date: '2018-04-23 19:30:00',
+        userId: '1',
+        startTime: '12:00',
+        endTime: '',
+        description: "we're going to outer space!"
       },
       {
-        name: 'george',
-        email: 'george@aol.com',
-        campusId: '1'
+        name: 'Mars',
+        date: '2018-04-24',
+        userId: '1',
+        startTime: '',
+        endTime: '',
+        description: 'description for Mars event'
       },
       {
-        name: 'heather',
-        email: 'heather@aol.com',
-        campusId: '2'
+        name: 'Terra',
+        date: '2018-04-25',
+        startTime: '',
+        endTime: '',
+        description: 'description for Terra event'
+
       },
       {
-        name: 'david',
-        email: 'david@aol.com',
-        campusId: '3'
-      },
-      {
-        name: 'shelley',
-        email: 'shelley@aol.com',
-        campusId: '4'
-      }
-    ]);
+        name: 'Titan',
+        date: '2018-04-26',
+        startTime: '',
+        endTime: '',
+        description: 'description for Titan event'
+      }]
+    );
   })
   .then(() => {
     console.log('flowers bloomed');

@@ -1,13 +1,17 @@
 @import 'public/stylus/index'
 
+table, th, td
+  border solid black
+  border-collapse collapse
+  boder-style solid
+  border-width 1px
+  padding .5em
+  vertical-align top
+
 nav
-  center()
   background-color secondary
   color tertiary
   border-radius()
-
-h1
-  center()
 
 a
   padding 0
@@ -24,6 +28,12 @@ button
   &:hover
     background-color rgba(white, 0.7)
     border-style inset
+
+.dateNum
+  display flex
+  justify-content flex-end
+  font-weight bold
+  font-size 20px
 
 @media tablet_and_desktop
   nav

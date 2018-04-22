@@ -2,8 +2,8 @@ import { combineReducers } from 'redux'
 // import {RECEIVE_AIRCRAFT} from './store'
 
 const initialState = {
-  // students: [],
-  // campuses: []
+  // events: [],
+  // users: []
 }
 
 const rootReducer = function(state = initialState, action) {

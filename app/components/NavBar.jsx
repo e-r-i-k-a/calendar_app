@@ -12,11 +12,8 @@ export default class NavBar extends Component {
     return (
       <div>
         <nav>
-          <Link to={'/home'}>
+          <Link to={'/'}>
             <button>Home</button>
-          </Link>
-          <Link to={'/articles'}>
-            <button>Articles</button>
           </Link>
         </nav>
       </div>

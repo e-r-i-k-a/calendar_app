@@ -1,22 +1,38 @@
 const db = require('../../db')
 const Sequelize = require('sequelize');
 
-let User = db.define('user', {
+let Event = db.define('event', {
   name: {
     type: Sequelize.STRING,
     allowNull: false
 	},
-	email: {
+	date: {
+		type: Sequelize.DATE,
+		allowNull: false
+	},
+	startTime: {
+		type: Sequelize.STRING,
+		defaultValue: new Date().toTimeString().split(' ')[0].slice(0, -3)
+	},
+	endTime: {
+		type: Sequelize.STRING,
+	},
+	description: {
+		type: Sequelize.TEXT,
+		defaultValue: 'lorem ipsum...'
+	}
+})
+
+let User = db.define('user', {
+	name: {
 		type: Sequelize.STRING
 	}
 })
 
-let Campus = db.define('campus', {
-})
-
 // associations:
-User.belongsTo(Campus);
-		//CampusId added to User table
-Campus.hasMany(User);
+User.hasOne(Event);
+User.hasMany(Event);
+Event.belongsTo(User);
+	//UserID added to Event table
 
-module.exports = {User, Campus}
+module.exports = {Event, User}

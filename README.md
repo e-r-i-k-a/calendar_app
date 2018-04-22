@@ -1,12 +1,12 @@
-# myproj
+# TTP challenge #2
 
-* Rename project in package.json
-* Rename db in db/index.js
-* Create a PostgreSQL database with that name
+# Question 1
+* q1.js
+# Question 2
+* q2.js
 
-# Using the App
-
-* Navigate to the repository directory
-* Run 'npm install'
-* Run 'npm run seed'
-* Run 'npm start'
+# Calendar app
+* psql CREATE DATABASE ttp2;
+* npm i
+* npm run seed
+* npm start

@@ -1,19 +1,19 @@
+table,
+th,
+td {
+  border: solid #000;
+  border-collapse: collapse;
+  boder-style: solid;
+  border-width: 1px;
+  padding: 0.5em;
+  vertical-align: top;
+}
 nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   background-color: #d1bc47;
   color: #e8dda3;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
-}
-h1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
 }
 a {
   padding: 0;
@@ -33,6 +33,12 @@ button {
 button:hover {
   background-color: rgba(255,255,255,0.7);
   border-style: inset;
+}
+.dateNum {
+  display: flex;
+  justify-content: flex-end;
+  font-weight: bold;
+  font-size: 20px;
 }
 @media only screen and (min-width: 481px) {
   nav {
