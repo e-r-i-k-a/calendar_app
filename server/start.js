@@ -28,5 +28,3 @@ if (module === require.main) {
     app.listen(PORT, () => console.log(`server listening on port ${PORT}`))
   });
 }
-
-
