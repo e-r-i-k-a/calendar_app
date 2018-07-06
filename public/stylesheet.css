@@ -52,6 +52,18 @@ button:hover {
   background-color: rgba(255,255,255,0.7);
   border-style: inset;
 }
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h3 {
+  text-align: center;
+}
+fieldset {
+  display: flex;
+  flex-direction: column;
+}
 .dateNum {
   display: flex;
   justify-content: flex-end;

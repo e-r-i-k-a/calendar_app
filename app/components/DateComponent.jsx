@@ -28,7 +28,7 @@ export default class DateComponent extends Component {
 
 	render() {
 		return (
-			<div>
+			<main>
 				<h1>{`${this.state.month} ${this.state.day}, ${this.state.year}`}</h1>
 				{
 					this.state.events.map((event) => {
@@ -42,7 +42,7 @@ export default class DateComponent extends Component {
 					})
 				}
 				<AddEvent selectedDate={this.state.selectedDate} />
-			</div>
+			</main>
 		)
 	}
 }

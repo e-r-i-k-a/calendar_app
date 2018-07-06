@@ -100,6 +100,7 @@ export default class Home extends Component {
             ))}
           </tbody>
         </table>
+        <h4>Click a date to add an Event!</h4>
       </main>
     )
   }

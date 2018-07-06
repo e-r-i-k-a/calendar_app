@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import Home from './Home'
 
 export default class AddEvent extends Component {
 	constructor(props) {
@@ -35,7 +34,7 @@ export default class AddEvent extends Component {
 			description: this.state.inputDescription,
 		})
 			.then(() => {
-				this.setState({redirect: true})
+				this.setState({ redirect: true })
 			})
 	}
 
@@ -44,48 +43,38 @@ export default class AddEvent extends Component {
 			return <Redirect push to='/' />
 		}
 		return (
-			<div>
+			<main>
 				<form onSubmit={e => this.handleSubmit(e)}>
 					<fieldset>
-					<h3>Add and Event:</h3>
-						<div>
-							<label>Event Name</label>
-							<div>
-								<input
-									type='text'
-									id='inputName'
-									onChange={this.handleInput} />
-							</div>
-						</div>
-						<label>Start Time</label>
-						<div>
-							<input
-								type='time'
-								id='inputStartTime'
-								onChange={this.handleInput} />
-						</div>
-						<label>End Time</label>
-						<div>
-							<input
-								type='time'
-								id='inputEndTime'
-								onChange={this.handleInput} />
-						</div>
-						<label>Description</label>
+						<h3>Add an Event</h3>
+						<label>Event Name:</label>
 						<div>
 							<input
 								type='text'
-								id='inputDescription'
+								id='inputName'
 								onChange={this.handleInput} />
 						</div>
-						<div>
-							<button type='submit'>
-								Submit
-            </button>
-						</div>
+						<label>Start Time:</label>
+						<input
+							type='time'
+							id='inputStartTime'
+							onChange={this.handleInput} />
+						<label>End Time:</label>
+						<input
+							type='time'
+							id='inputEndTime'
+							onChange={this.handleInput} />
+						<label>Description:</label>
+						<input
+							type='text'
+							id='inputDescription'
+							onChange={this.handleInput} />
 					</fieldset>
+					<button type='submit'>
+						Submit
+        	</button>
 				</form>
-			</div>
+			</main>
 		)
 	}
 }
