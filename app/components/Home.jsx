@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import DateComponent from './DateComponent'
-import AddEvent from './AddEvent'
 
 export default class Home extends Component {
   constructor(props) {
@@ -77,7 +75,6 @@ export default class Home extends Component {
   render() {
     const weekDays = this.state.weekDays;
     let month = this.makeMonth(30);
-    console.log('state', this.state)
     if (this.state.redirect) {
       return <Redirect push to={`${this.state.month}/${this.state.selectedDate}`} />
     }
@@ -94,7 +91,8 @@ export default class Home extends Component {
             {month.map(week => (
               <tr key={week}>
                 {week.map(date =>
-                  <td onClick={(e) => this.handleDateClick(date)} >
+                  <td onClick={(e) => this.handleDateClick(date)}
+                    title='Click to add an event!'>
                     {this.makeDateCell(date)}
                   </td>
                 )}

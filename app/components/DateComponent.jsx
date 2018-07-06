@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Home from './Home'
 import AddEvent from './AddEvent'
 
 export default class DateComponent extends Component {
@@ -28,9 +27,6 @@ export default class DateComponent extends Component {
 	}
 
 	render() {
-		console.log('state', this.state)
-		console.log('props', this.props)
-		console.log('events', this.state.events)
 		return (
 			<div>
 				<h1>{`${this.state.month} ${this.state.day}, ${this.state.year}`}</h1>
