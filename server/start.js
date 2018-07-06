@@ -21,7 +21,6 @@ if (module === require.main) {
   // Start listening only if we're the main module.
   //When a file is run directly from Node.js, require.main is set to its module
 
-  const db = require('../db')
   db.sync()
   .then(() => {
     console.log('db is synced AF')

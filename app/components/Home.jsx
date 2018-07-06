@@ -10,7 +10,7 @@ export default class Home extends Component {
     this.state = {
       month: 'April',
       year: 2018,
-      weekDays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      weekDays: ['Sun', 'M', 'Tu', 'W', 'Th', 'F', 'Sat'],
       events: [],
       selectedDate: '',
       selectedDateEvents: {},
@@ -82,29 +82,27 @@ export default class Home extends Component {
       return <Redirect push to={`${this.state.month}/${this.state.selectedDate}`} />
     }
     return (
-      <div>
-        <main>
-          <h1>{`${this.state.month} ${this.state.year}`}</h1>
-          <table className='calendar-table'>
-            <thead>
-              <tr>
-                {weekDays.map(day => <th key={day}>{day}</th>)}
+      <main>
+        <h1>{`${this.state.month} ${this.state.year}`}</h1>
+        <table className='calendar-table'>
+          <thead>
+            <tr>
+              {weekDays.map(day => <th key={day}>{day}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {month.map(week => (
+              <tr key={week}>
+                {week.map(date =>
+                  <td onClick={(e) => this.handleDateClick(date)} >
+                    {this.makeDateCell(date)}
+                  </td>
+                )}
               </tr>
-            </thead>
-            <tbody>
-              {month.map(week => (
-                <tr key={week}>
-                  {week.map(date =>
-                    <td onClick={(e) => this.handleDateClick(date)} >
-                      {this.makeDateCell(date)}
-                    </td>
-                  )}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </main>
-      </div>
+            ))}
+          </tbody>
+        </table>
+      </main>
     )
   }
 }

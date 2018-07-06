@@ -1,3 +1,16 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+table {
+  table-layout: fixed;
+  width: 100%;
+  box-sizing: border-box;
+}
+th {
+  background-color: #ebedef;
+}
 table,
 th,
 td {
@@ -14,16 +27,18 @@ nav {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
 }
 a {
   padding: 0;
   margin: 10px;
 }
 button {
-  margin: 10px;
+  margin: 5px;
   font-size: 1.2em;
   background-color: #fff;
-  border-style: outset #000;
+  border-style: outset;
   padding: 5px;
   cursor: pointer;
   -webkit-border-radius: 10px;
